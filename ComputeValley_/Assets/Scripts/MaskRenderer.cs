@@ -12,7 +12,8 @@ public class MaskRenderer : MonoBehaviour
     [SerializeField] private ComputeShader compute = null;
 
     [Range(64, 4096)] [SerializeField] private int TextureSize = 2048;
-    [SerializeField] private float MapSize = 0;
+    [SerializeField] private float mapSize = 0;
+    public float MapSize => mapSize;
 
     [SerializeField] private float BlendDistance = 4.0f;
 
@@ -84,7 +85,7 @@ public class MaskRenderer : MonoBehaviour
         compute.SetFloat(noiseDetailId, NoiseDetail);
 
         Shader.SetGlobalTexture(maskTextureId, maskTexture);
-        Shader.SetGlobalFloat(mapSizeId, MapSize);
+        Shader.SetGlobalFloat(mapSizeId, mapSize);
 
         bufferElements = new List<EntityBufferElement>();
     }

@@ -9,7 +9,7 @@ public class Entity : MonoBehaviour
 
     [Range(0, 40)] public int Range;
 
-    private void Start()
+    private void Awake()
     {
         MaskRenderer.RegisterEntity(this);
     }

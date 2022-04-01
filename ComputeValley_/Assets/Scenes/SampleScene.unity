@@ -639,6 +639,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 734320573}
+  - component: {fileID: 734320575}
+  - component: {fileID: 734320574}
   m_Layer: 0
   m_Name: Controller
   m_TagString: Untagged
@@ -660,6 +662,43 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &734320574
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 734320572}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ffbba00669f83ae4d86cc6960f766eea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Materials:
+  - {fileID: 2100000, guid: 9426161f809dd5542aae526354892ccc, type: 2}
+  msk: {fileID: 734320575}
+--- !u!114 &734320575
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 734320572}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ddb678cd98f61e4478d007d51e46f494, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  compute: {fileID: 7200000, guid: 2b9e33eb495105c428d74f7d7f20cb3d, type: 3}
+  TextureSize: 2048
+  mapSize: 0
+  BlendDistance: 4
+  MaskColor0: {r: 0, g: 0, b: 0, a: 0}
+  MaskColor1: {r: 0, g: 0, b: 0, a: 0}
+  MaskColor2: {r: 0, g: 0, b: 0, a: 0}
+  MaskColor3: {r: 0, g: 0, b: 0, a: 0}
+  NoiseTexture: {fileID: 2800000, guid: faa8247d83666a647b3b8011ee57cc96, type: 3}
+  NoiseDetail: 4
 --- !u!1 &779591488
 GameObject:
   m_ObjectHideFlags: 0
