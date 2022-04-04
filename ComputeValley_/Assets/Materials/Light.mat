@@ -8,7 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Light
-  m_Shader: {fileID: 4800000, guid: 9a27b33fdf0da014aba7fbe67801443c, type: 3}
+  m_Shader: {fileID: -6465566751694194690, guid: a6230598ead4c7d468f33ff5399f96e1, type: 3}
   m_ShaderKeywords: _GLOSSINESS_FROM_BASE_ALPHA _NORMALMAP
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -44,6 +44,10 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
+        m_Texture: {fileID: 2800000, guid: 2ec6e1532acb1254f9f3797b5d82db44, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Mask:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
@@ -77,6 +81,8 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
+    - RENDER_HEAT: 0
+    - RENDER_HEATMAP: 0
     - _AlphaClip: 0
     - _AlphaTestToggle: 0
     - _Blend: 0

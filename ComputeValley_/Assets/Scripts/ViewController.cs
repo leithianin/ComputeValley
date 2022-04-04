@@ -12,6 +12,11 @@ public class ViewController : MonoBehaviour
 
     void Start()
     {
+        foreach(Material m in Materials)
+        {
+            m.SetTexture("_Mask", msk.maskTexture);
+        }
+
         EnableHeatmapView(false);
     }
 
@@ -20,6 +25,7 @@ public class ViewController : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.H))
         {
+            Debug.Log("H");
             HandleHeatmap();
         }
 

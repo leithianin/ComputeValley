@@ -5,11 +5,11 @@ using UnityEngine;
 public class Entity : MonoBehaviour
 {
     [Range(0,3)] public int NoiseLevel;
-    public float Noise { get; private set; }
+    public float Noise => NoiseLevel;
 
     [Range(0, 40)] public int Range;
 
-    private void Awake()
+    private void Start()
     {
         MaskRenderer.RegisterEntity(this);
     }

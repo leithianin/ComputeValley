@@ -24,6 +24,8 @@ Shader "Cyanilux/URPTemplates/SimpleLitShaderExample"
 		_SpecGlossMap("Specular Map", 2D) = "white" {}
 		[Toggle(_GLOSSINESS_FROM_BASE_ALPHA)] _GlossSource("Glossiness Source, from Albedo Alpha (if on) vs from Specular (if off)", Float) = 0
 		_Smoothness("Smoothness", Range(0.0, 1.0)) = 0.5
+
+		[Toggle(RENDER)]
 	}
 	SubShader
 	{
@@ -86,7 +88,7 @@ Shader "Cyanilux/URPTemplates/SimpleLitShaderExample"
 			#pragma multi_compile_fog
 
 			//Custom Keywords
-			#pragma multi_compile __ RENDER_HEAT
+			#pragma multi_compile __ RENDER_HEATMAP
 
 			// GPU Instancing (not supported)
 			//#pragma multi_compile_instancing
@@ -323,7 +325,7 @@ Shader "Cyanilux/URPTemplates/SimpleLitShaderExample"
 
 				color.rgb = MixFog(color.rgb, inputData.fogCoord);
 				//color.a = OutputAlpha(color.a, _Surface);
-				#if defined(RENDER_HEAT)
+				#if defined(RENDER_HEATMAP)
 					return float4(.5f, .5f, .5f, 1);
 				#else
 					return color;
@@ -481,4 +483,4 @@ Shader "Cyanilux/URPTemplates/SimpleLitShaderExample"
 		}
 
 	}
-}
+}*/

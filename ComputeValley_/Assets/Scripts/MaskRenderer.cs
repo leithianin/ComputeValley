@@ -25,7 +25,7 @@ public class MaskRenderer : MonoBehaviour
     public Texture2D NoiseTexture;
     [Range(0.0f, 5.0f)] public float NoiseDetail = 4.0f;
 
-    private RenderTexture maskTexture;
+    public RenderTexture maskTexture;
 
     //Shader properties cache
     private static readonly int textureSizeId = Shader.PropertyToID("_TextureSize");
