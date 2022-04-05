@@ -24,7 +24,7 @@ void CSMain (uint3 id : SV_DispatchThreadID)
     float val = 0.0f;
 
     float2 texelUVPos = id.xy / (float)_TextureSize;
-    float2 texelWorldPos = (_MapSize * texelUVPos) - (_MapSize * .5f);
+    float2 texelWorldPos = (_MapSize * texelUVPos) /* - (_MapSize * .5f) */ ;
 
     for (int i = 0; i < _EntityCount; i++)
     {
@@ -37,8 +37,12 @@ void CSMain (uint3 id : SV_DispatchThreadID)
 
     val += _NoiseTex.SampleLevel(sampler_NoiseTex, texelUVPos * _NoiseDetail, 0).r * .05f;
 
-    float4 col = lerp(_Color2, _Color3, smoothstep(.55f, .75f, val));
+    /*float4 col = lerp(_Color2, _Color3, smoothstep(.55f, .75f, val));
     col = lerp(_Color1, col, smoothstep(.3f, .5f, val));
-    col = lerp(_Color0, col, smoothstep(.05f, .25f, val));
+    col = lerp(_Color0, col, smoothstep(.05f, .25f, val));*/
+
+    float4 col = lerp(_Color2, _Color3, smoothstep(2, 3, val));
+    col = lerp(_Color1, col, smoothstep(1, 2, val));
+    col = lerp(_Color0, col, smoothstep(0, 1, val));
     _Mask[id.xy] = col;
 }

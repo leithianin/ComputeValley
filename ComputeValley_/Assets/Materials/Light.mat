@@ -82,7 +82,7 @@ Material:
     m_Ints: []
     m_Floats:
     - RENDER_HEAT: 0
-    - RENDER_HEATMAP: 0
+    - RENDER_HEATMAP: 1
     - _AlphaClip: 0
     - _AlphaTestToggle: 0
     - _Blend: 0
@@ -100,6 +100,7 @@ Material:
     - _GlossSource: 1
     - _Glossiness: 0
     - _GlossyReflections: 0
+    - _MapSize: 100
     - _Metallic: 0
     - _NormalMapToggle: 1
     - _OcclusionStrength: 1
