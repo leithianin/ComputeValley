@@ -82,7 +82,7 @@ Material:
     m_Ints: []
     m_Floats:
     - RENDER_HEAT: 0
-    - RENDER_HEATMAP: 1
+    - RENDER_HEATMAP: 0
     - _AlphaClip: 0
     - _AlphaTestToggle: 0
     - _Blend: 0
