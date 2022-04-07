@@ -9,6 +9,13 @@ float4 _Color0;
 float4 _Color1;
 float4 _Color2;
 float4 _Color3;
+float4 _Color4;
+float4 _Color5;
+float4 _Color6;
+float4 _Color7;
+float4 _Color8;
+float4 _Color9;
+float4 _Color10;
 
 StructuredBuffer<float> _EntityBuffer;
 
@@ -32,7 +39,14 @@ void CSMain (uint3 id : SV_DispatchThreadID)
         val += noiseVal * _EntityBuffer[4 * i + 3];
     }
 
-    float4 col = lerp(_Color2, _Color3, smoothstep(2, 3, val));
+    float4 col = lerp(_Color9, _Color10, smoothstep(9, 10, val));
+    col = lerp(_Color8, col, smoothstep(8, 9, val));
+    col = lerp(_Color7, col, smoothstep(7, 8, val));
+    col = lerp(_Color6, col, smoothstep(6, 7, val));
+    col = lerp(_Color5, col, smoothstep(5, 6, val));
+    col = lerp(_Color4, col, smoothstep(4, 5, val));
+    col = lerp(_Color3, col, smoothstep(3, 4, val));
+    col = lerp(_Color2, col, smoothstep(2, 3, val));
     col = lerp(_Color1, col, smoothstep(1, 2, val));
     col = lerp(_Color0, col, smoothstep(0, 1, val));
     _Mask[id.xy] = col;

@@ -11,7 +11,7 @@ public class MaskRenderer : MonoBehaviour
     //Properties
     [SerializeField] private ComputeShader compute = null;
 
-    [Range(64, 4096)] [SerializeField] private int TextureSize = 2048;
+    [Range(64, 4096)] [SerializeField] public int TextureSize = 2048;
     [SerializeField] private float mapSize = 0;
     public float MapSize => mapSize;
 
@@ -21,6 +21,13 @@ public class MaskRenderer : MonoBehaviour
     public Color MaskColor1;
     public Color MaskColor2;
     public Color MaskColor3;
+    public Color MaskColor4;
+    public Color MaskColor5;
+    public Color MaskColor6;
+    public Color MaskColor7;
+    public Color MaskColor8;
+    public Color MaskColor9;
+    public Color MaskColor10;
 
     public RenderTexture maskTexture;
 
@@ -34,6 +41,13 @@ public class MaskRenderer : MonoBehaviour
     private static readonly int color1Id = Shader.PropertyToID("_Color1");
     private static readonly int color2Id = Shader.PropertyToID("_Color2");
     private static readonly int color3Id = Shader.PropertyToID("_Color3");
+    private static readonly int color4Id = Shader.PropertyToID("_Color4");
+    private static readonly int color5Id = Shader.PropertyToID("_Color5");
+    private static readonly int color6Id = Shader.PropertyToID("_Color6");
+    private static readonly int color7Id = Shader.PropertyToID("_Color7");
+    private static readonly int color8Id = Shader.PropertyToID("_Color8");
+    private static readonly int color9Id = Shader.PropertyToID("_Color9");
+    private static readonly int color10Id = Shader.PropertyToID("_Color10");
 
     private static readonly int maskTextureId = Shader.PropertyToID("_Mask");
 
@@ -74,6 +88,13 @@ public class MaskRenderer : MonoBehaviour
         compute.SetVector(color1Id, MaskColor1);
         compute.SetVector(color2Id, MaskColor2);
         compute.SetVector(color3Id, MaskColor3);
+        compute.SetVector(color4Id, MaskColor4);
+        compute.SetVector(color5Id, MaskColor5);
+        compute.SetVector(color6Id, MaskColor6);
+        compute.SetVector(color7Id, MaskColor7);
+        compute.SetVector(color8Id, MaskColor8);
+        compute.SetVector(color9Id, MaskColor9);
+        compute.SetVector(color10Id, MaskColor10);
 
         Shader.SetGlobalTexture(maskTextureId, maskTexture);
         Shader.SetGlobalFloat(mapSizeId, mapSize);
@@ -112,6 +133,8 @@ public class MaskRenderer : MonoBehaviour
         compute.SetBuffer(0, entityBufferId, buffer);
 
         compute.SetInt(entityCountId, bufferElements.Count);
+        //compute.SetFloat(blendId, BlendDistance / entity.Range);
+        //compute.SetFloat(blendId, BlendDistance * entity.Range);
 
         compute.Dispatch(0, Mathf.CeilToInt(TextureSize / 8.0f), Mathf.CeilToInt(TextureSize / 8.0f), 1);
     }

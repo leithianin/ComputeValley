@@ -698,11 +698,18 @@ MonoBehaviour:
   compute: {fileID: 7200000, guid: 2b9e33eb495105c428d74f7d7f20cb3d, type: 3}
   TextureSize: 2048
   mapSize: 100
-  BlendDistance: 6
-  MaskColor0: {r: 0.08627451, g: 0.41176474, b: 0.5294118, a: 1}
-  MaskColor1: {r: 0.27450982, g: 0.5019608, b: 0.4901961, a: 1}
-  MaskColor2: {r: 0.79215693, g: 0.6156863, b: 0.2627451, a: 1}
-  MaskColor3: {r: 0.6117647, g: 0.24313727, b: 0.15294118, a: 1}
+  BlendDistance: 50
+  MaskColor0: {r: 1, g: 1, b: 1, a: 1}
+  MaskColor1: {r: 1, g: 0.9481132, b: 0.9481132, a: 1}
+  MaskColor2: {r: 1, g: 0.9386792, b: 0.9386792, a: 1}
+  MaskColor3: {r: 1, g: 0.8349056, b: 0.8349056, a: 1}
+  MaskColor4: {r: 1, g: 0.7028302, b: 0.7028302, a: 1}
+  MaskColor5: {r: 1, g: 0.5518868, b: 0.5518868, a: 1}
+  MaskColor6: {r: 0.9725491, g: 0.38823533, b: 0.38823533, a: 1}
+  MaskColor7: {r: 0.9339623, g: 0.19824673, b: 0.19824673, a: 1}
+  MaskColor8: {r: 0.754717, g: 0, b: 0, a: 1}
+  MaskColor9: {r: 0.5660378, g: 0, b: 0, a: 1}
+  MaskColor10: {r: 0.3584906, g: 0, b: 0, a: 1}
   maskTexture: {fileID: 0}
 --- !u!1 &779591488
 GameObject:

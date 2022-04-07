@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Entity : MonoBehaviour
 {
-    [Range(0, 3)] public int NoiseLevel;
+    [Range(0, 10)] public int NoiseLevel;
     public float Noise => NoiseLevel;
 
     [HideInInspector] public int Range;

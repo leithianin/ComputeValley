@@ -10,7 +10,9 @@ public class ViewController : MonoBehaviour
 
     private bool isEnabled;
 
-    private int[,] datas;
+    //private int[,] texelsTab;
+
+    //public int viewsCount;
 
     void Start()
     {
@@ -21,9 +23,9 @@ public class ViewController : MonoBehaviour
 
         EnableHeatmapView(false);
 
-        /*datas = new int[texSize * texSize, dataCount];
+        //texelsTab = new int[msk.TextureSize * msk.TextureSize, viewsCount];
 
-        for (int j = 0; j < dataCount; j++)
+        /*for (int j = 0; j < dataCount; j++)
         {
             for (int i = 0; i < texSize * texSize; i++)
             {
