@@ -10,6 +10,8 @@ public class ViewController : MonoBehaviour
 
     private bool isEnabled;
 
+    private int[,] datas;
+
     void Start()
     {
         foreach(Material m in Materials)
@@ -18,6 +20,17 @@ public class ViewController : MonoBehaviour
         }
 
         EnableHeatmapView(false);
+
+        /*datas = new int[texSize * texSize, dataCount];
+
+        for (int j = 0; j < dataCount; j++)
+        {
+            for (int i = 0; i < texSize * texSize; i++)
+            {
+            
+                datas[i,j] = 
+            }
+        }*/
     }
 
     // Update is called once per frame

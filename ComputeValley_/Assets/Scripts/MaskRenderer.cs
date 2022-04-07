@@ -22,9 +22,6 @@ public class MaskRenderer : MonoBehaviour
     public Color MaskColor2;
     public Color MaskColor3;
 
-    public Texture2D NoiseTexture;
-    [Range(0.0f, 5.0f)] public float NoiseDetail = 4.0f;
-
     public RenderTexture maskTexture;
 
     //Shader properties cache
@@ -37,9 +34,6 @@ public class MaskRenderer : MonoBehaviour
     private static readonly int color1Id = Shader.PropertyToID("_Color1");
     private static readonly int color2Id = Shader.PropertyToID("_Color2");
     private static readonly int color3Id = Shader.PropertyToID("_Color3");
-
-    private static readonly int noiseTexId = Shader.PropertyToID("_NoiseTex");
-    private static readonly int noiseDetailId = Shader.PropertyToID("_NoiseDetail");
 
     private static readonly int maskTextureId = Shader.PropertyToID("_Mask");
 
@@ -80,9 +74,6 @@ public class MaskRenderer : MonoBehaviour
         compute.SetVector(color1Id, MaskColor1);
         compute.SetVector(color2Id, MaskColor2);
         compute.SetVector(color3Id, MaskColor3);
-
-        compute.SetTexture(0, noiseTexId, NoiseTexture);
-        compute.SetFloat(noiseDetailId, NoiseDetail);
 
         Shader.SetGlobalTexture(maskTextureId, maskTexture);
         Shader.SetGlobalFloat(mapSizeId, mapSize);

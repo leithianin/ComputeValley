@@ -10,10 +10,6 @@ float4 _Color1;
 float4 _Color2;
 float4 _Color3;
 
-Texture2D _NoiseTex;
-SamplerState sampler_NoiseTex;
-float _NoiseDetail;
-
 StructuredBuffer<float> _EntityBuffer;
 
 RWTexture2D<float4> _Mask;
@@ -24,7 +20,7 @@ void CSMain (uint3 id : SV_DispatchThreadID)
     float val = 0.0f;
 
     float2 texelUVPos = id.xy / (float)_TextureSize;
-    float2 texelWorldPos = (_MapSize * texelUVPos) /* - (_MapSize * .5f) */ ;
+    float2 texelWorldPos = (_MapSize * texelUVPos);
 
     for (int i = 0; i < _EntityCount; i++)
     {
@@ -32,14 +28,9 @@ void CSMain (uint3 id : SV_DispatchThreadID)
         float distance = length(texelWorldPos - entityWorldPos);
 
         float noiseVal = smoothstep(_EntityBuffer[4 * i + 2] + _Blend, _EntityBuffer[4 * i + 2], distance);
-        val = max(val, noiseVal * _EntityBuffer[4 * i + 3]);
+        //val = max(val, noiseVal * _EntityBuffer[4 * i + 3]);
+        val += noiseVal * _EntityBuffer[4 * i + 3];
     }
-
-    val += _NoiseTex.SampleLevel(sampler_NoiseTex, texelUVPos * _NoiseDetail, 0).r * .05f;
-
-    /*float4 col = lerp(_Color2, _Color3, smoothstep(.55f, .75f, val));
-    col = lerp(_Color1, col, smoothstep(.3f, .5f, val));
-    col = lerp(_Color0, col, smoothstep(.05f, .25f, val));*/
 
     float4 col = lerp(_Color2, _Color3, smoothstep(2, 3, val));
     col = lerp(_Color1, col, smoothstep(1, 2, val));
