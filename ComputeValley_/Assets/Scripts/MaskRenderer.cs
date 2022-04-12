@@ -72,7 +72,7 @@ public class MaskRenderer : MonoBehaviour
         public float PositionY;
         public float Value;
     }
-    private PixelDataBufferElement[,] pixels = new PixelDataBufferElement[TextureSize, TextureSize];
+    private List<PixelDataBufferElement> pixels;
     private ComputeBuffer pixelsBuffer = null;
 
     private void Awake()
@@ -110,11 +110,13 @@ public class MaskRenderer : MonoBehaviour
         Shader.SetGlobalFloat(mapSizeId, mapSize);
 
         bufferElements = new List<EntityBufferElement>();
+        //pixels = new List<PixelDataBufferElement>();
     }
 
     private void OnDestroy()
     {
         entityBuffer?.Dispose();
+        //pixelsBuffer?.Dispose();
 
         if (maskTexture != null)
             DestroyImmediate(maskTexture);
@@ -123,6 +125,7 @@ public class MaskRenderer : MonoBehaviour
     private void Update()
     {
         bufferElements.Clear();
+        //pixels.Clear();
 
         foreach(Entity entity in entities)
         {
@@ -136,29 +139,31 @@ public class MaskRenderer : MonoBehaviour
             bufferElements.Add(element);
         }
 
+        /*for (int i = 0; i < TextureSize * TextureSize; i++)
+        {
+            PixelDataBufferElement element = new PixelDataBufferElement
+            {
+                PositionX = 0,
+                PositionY = 0,
+                Value = 0
+            };
+            pixels.Add(element);
+        }*/
+
         entityBuffer?.Release();
+        //pixelsBuffer?.Release();
         entityBuffer = new ComputeBuffer(bufferElements.Count * 4, sizeof(float));
+        //pixelsBuffer = new ComputeBuffer((TextureSize * TextureSize) * 4, sizeof(float));
 
         entityBuffer.SetData(bufferElements);
+        //pixelsBuffer.SetData(pixels);
         compute.SetBuffer(0, entityBufferId, entityBuffer);
+        //compute.SetBuffer(0, pixelBufferId, pixelsBuffer);
 
         compute.SetInt(entityCountId, bufferElements.Count);
         //To adjust blend distance according to the range radius
         //compute.SetFloat(blendId, BlendDistance / entity.Range);
         //compute.SetFloat(blendId, BlendDistance * entity.Range);
-
-        for (int y = 0; y < TextureSize; y++)
-        {
-            for (int x = 0; x < TextureSize; x++)
-            {
-                /*PixelDataBufferElement element = new EntityBufferElement
-                {
-                    PositionX = x,
-                    PositionY = y,
-                    Value
-                };*/
-            }
-        }
 
         compute.Dispatch(0, Mathf.CeilToInt(TextureSize / 8.0f), Mathf.CeilToInt(TextureSize / 8.0f), 1);
     }
