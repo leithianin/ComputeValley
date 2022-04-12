@@ -21,6 +21,14 @@ StructuredBuffer<float> _EntityBuffer;
 
 RWTexture2D<float4> _Mask;
 
+/*struct PixelData
+{
+    float2 position;
+    float noiseValue;
+}
+
+RWStructuredBuffer<PixelData> pixels;*/
+
 [numthreads(8,8,1)]
 void CSMain (uint3 id : SV_DispatchThreadID)
 {
@@ -51,3 +59,5 @@ void CSMain (uint3 id : SV_DispatchThreadID)
     col = lerp(_Color0, col, smoothstep(0, 1, val));
     _Mask[id.xy] = col;
 }
+
+
