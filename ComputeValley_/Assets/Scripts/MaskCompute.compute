@@ -18,17 +18,9 @@ float4 _Color9;
 float4 _Color10;
 
 StructuredBuffer<float> _EntityBuffer;
-//RWStructuredBuffer<float> _PixelBuffer;
+RWStructuredBuffer<float> _PixelBuffer;
 
 RWTexture2D<float4> _Mask;
-
-/*struct PixelData
-{
-    float2 position;
-    float noiseValue;
-}
-
-RWStructuredBuffer<PixelData> pixels;*/
 
 [numthreads(8,8,1)]
 void CSMain (uint3 id : SV_DispatchThreadID)
@@ -60,15 +52,12 @@ void CSMain (uint3 id : SV_DispatchThreadID)
     col = lerp(_Color0, col, smoothstep(0, 1, val));
     _Mask[id.xy] = col;
 
-    /*for (int y = 0; y < _TextureSize; y++)
-    {
-        for (int x = 0; x < _TexutreSize; x++)
-        {
-            _PixelBuffer[3 * i] = texelWorldPos.x;
-            _PixelBuffer[3 * i + 1] = texelWorldPos.z;
-            _PixelBuffer[3 * i + 2] = val;
-        }
-    }*/
+   for (int x = 0; x < _TextureSize * _TextureSize; x++)
+   {
+       _PixelBuffer[3 * i] = texelWorldPos.x;
+       _PixelBuffer[3 * i + 1] = texelWorldPos.y;
+       _PixelBuffer[3 * i + 2] = val;
+   }
 }
 
 

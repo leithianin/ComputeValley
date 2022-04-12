@@ -232,7 +232,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba6d317505cdb1e4d81d01fefa4ab346, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  NoiseLevel: 3
+  NoiseLevel: 0
   Range: 21
   minRange: 0
   rangeSpread: 2
@@ -345,7 +345,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba6d317505cdb1e4d81d01fefa4ab346, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  NoiseLevel: 2
+  NoiseLevel: 0
   Range: 10
   minRange: 4
   rangeSpread: 4
@@ -632,7 +632,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba6d317505cdb1e4d81d01fefa4ab346, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  NoiseLevel: 2
+  NoiseLevel: 0
   Range: 22
   minRange: 0
   rangeSpread: 2
@@ -696,7 +696,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   compute: {fileID: 7200000, guid: 2b9e33eb495105c428d74f7d7f20cb3d, type: 3}
-  TextureSize: 2048
   mapSize: 100
   BlendDistance: 50
   MaskColor0: {r: 1, g: 1, b: 1, a: 1}
@@ -820,40 +819,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba6d317505cdb1e4d81d01fefa4ab346, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  NoiseLevel: 3
+  NoiseLevel: 0
   Range: 10
   minRange: 0
   rangeSpread: 2
---- !u!1 &1045418472
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1045418473}
-  m_Layer: 0
-  m_Name: Objects
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1045418473
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1045418472}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 11
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1368471278
 GameObject:
   m_ObjectHideFlags: 0
@@ -882,7 +851,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1368471278}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2.87, y: 5.1, z: -2.9}
+  m_LocalPosition: {x: 9.5, y: 5.1, z: 11.8}
   m_LocalScale: {x: 10, y: 10, z: 10}
   m_Children: []
   m_Father: {fileID: 0}
@@ -963,7 +932,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba6d317505cdb1e4d81d01fefa4ab346, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  NoiseLevel: 1
+  NoiseLevel: 0
   Range: 28
   minRange: 0
   rangeSpread: 2
@@ -1234,7 +1203,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba6d317505cdb1e4d81d01fefa4ab346, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  NoiseLevel: 1
+  NoiseLevel: 0
   Range: 19
   minRange: 0
   rangeSpread: 2
