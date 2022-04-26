@@ -72,7 +72,7 @@ public class MaskRenderer : MonoBehaviour
         public float PositionY;
         public float Value;
     }
-    private List<PixelDataBufferElement> pixels;
+    private int[] pixels;
     private ComputeBuffer pixelsBuffer = null;
 
     private void Awake()
@@ -110,7 +110,7 @@ public class MaskRenderer : MonoBehaviour
         Shader.SetGlobalFloat(mapSizeId, mapSize);
 
         bufferElements = new List<EntityBufferElement>();
-        pixels = new List<PixelDataBufferElement>();
+        pixels = new int[0];
     }
 
     private void OnDestroy()
@@ -125,7 +125,7 @@ public class MaskRenderer : MonoBehaviour
     private void Update()
     {
         bufferElements.Clear();
-        pixels.Clear();
+        //pixels.Clear();
 
         foreach(Entity entity in entities)
         {
@@ -144,12 +144,14 @@ public class MaskRenderer : MonoBehaviour
         entityBuffer?.Release();
         pixelsBuffer?.Release();
         entityBuffer = new ComputeBuffer(bufferElements.Count * 4, sizeof(float));
-        pixelsBuffer = new ComputeBuffer((TextureSize * TextureSize) * 4, sizeof(float));
+        pixelsBuffer = new ComputeBuffer((TextureSize * TextureSize), sizeof(int));
 
-        entityBuffer.SetData(bufferElements);
-        pixelsBuffer.SetData(pixels);
         compute.SetBuffer(0, entityBufferId, entityBuffer);
         compute.SetBuffer(0, pixelBufferId, pixelsBuffer);
+
+        entityBuffer.SetData(bufferElements);
+
+        pixels = new int[pixelsBuffer.count];
 
         compute.SetInt(entityCountId, bufferElements.Count);
         //To adjust blend distance according to the range radius
@@ -158,6 +160,17 @@ public class MaskRenderer : MonoBehaviour
 
         compute.Dispatch(0, Mathf.CeilToInt(TextureSize / 8.0f), Mathf.CeilToInt(TextureSize / 8.0f), 1);
 
-        Debug.Log(pixelsBuffer);
+        pixelsBuffer.GetData(pixels);
+    }
+
+    public Vector2Int positions;
+
+    [ContextMenu("Debug")]
+    public void DebugTest()
+    {
+        Debug.Log("Nxt : ");
+        Debug.Log((int)(positions.x * TextureSize / MapSize));
+        Debug.Log((int)(positions.y * TextureSize / MapSize));
+        Debug.Log(pixels[(int)(positions.x * TextureSize / MapSize) * TextureSize + (int)(positions.y * TextureSize / MapSize)]);
     }
 }
